@@ -1,4 +1,4 @@
-package com.learning.openApiTest.openApiTest;
+package org.learning.openApiTest;
 
 import org.springframework.boot.SpringApplication;
 import org.springframework.boot.autoconfigure.SpringBootApplication;

@@ -1,0 +1,78 @@
+openapi: "3.0.0"
+info:
+  version: "1.0.0"
+  title: "test"
+  description: "no description"
+paths:
+  /student:
+    get:
+      description: Get all students
+      responses:
+        200:
+          description: OK
+          content:
+            application/json:
+              schema:
+                $ref: '#/components/schemas/studentObjectArray'
+
+    post:
+      description: Add a student
+      responses:
+        200:
+          description: OK
+          content:
+            application/json:
+              schema:
+                $ref: '#/components/schemas/studentObject'
+      requestBody:
+        content:
+          application/json:
+            schema:
+              $ref: '#/components/schemas/studentObject'
+
+  /student/{id}:
+    parameters:
+      - in: path
+        required: true
+        name: id
+        schema:
+          type: integer
+    get:
+      description: Get a student
+      responses:
+        200:
+          description: OK
+          content:
+            application/json:
+              schema:
+                $ref: '#/components/schemas/studentObject'
+    delete:
+      description: Delete a student
+      responses:
+        200:
+          description: OK
+          content:
+            application/json:
+              schema:
+                type: string
+
+components:
+  schemas:
+    studentObject:
+      properties:
+        id:
+          nullable: false
+          type: integer
+        name:
+          nullable: false
+          type: string
+        age:
+          nullable: false
+          type: integer
+        enrolled:
+          nullable: true
+          type: boolean
+    studentObjectArray:
+      type: array
+      items:
+        $ref: '#/components/schemas/studentObject'
