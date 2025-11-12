@@ -3,6 +3,8 @@ info:
   version: "1.0.0"
   title: "test"
   description: "no description"
+servers:
+  - url: http://localhost:8080
 paths:
   /student:
     get:

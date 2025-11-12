@@ -222,7 +222,7 @@
                             <goal>generate</goal>
                         </goals>
                         <configuration>
-                            <inputSpec>oad.yaml</inputSpec>
+                            <inputSpec>client/oad.yaml</inputSpec>
                             <language>java</language>
                             <configOptions>
                                 <sourceFolder>src/gen/java/main</sourceFolder>
