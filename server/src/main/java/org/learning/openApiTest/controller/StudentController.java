@@ -4,9 +4,11 @@ import lombok.extern.slf4j.Slf4j;
 import org.learning.openApiTest.dataaccess.StudentDao;
 import org.learning.openApiTest.model.Student;
 import org.springframework.beans.factory.annotation.Autowired;
+import org.springframework.http.HttpStatus;
 import org.springframework.web.bind.annotation.*;
 
 import java.util.List;
+import java.util.NoSuchElementException;
 
 @Slf4j
 @RestController

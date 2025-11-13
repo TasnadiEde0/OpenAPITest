@@ -1,6 +1,8 @@
 package org.learning.openApiTest;
 
 import lombok.extern.slf4j.Slf4j;
+import org.learning.openApiTest.rest.ApiClient;
+import org.learning.openApiTest.rest.ApiException;
 import org.learning.openApiTest.rest.api.DefaultApi;
 import org.learning.openApiTest.rest.model.StudentObject;
 
@@ -9,7 +11,11 @@ import java.util.List;
 @Slf4j
 public class ClientMain {
     public static void main(String[] args) throws Exception {
-        DefaultApi api = new DefaultApi();
+        ApiClient client = new ApiClient();
+        client.setConnectTimeout(600000);
+        client.setReadTimeout(600000);
+        client.setWriteTimeout(600000);
+        DefaultApi api = new DefaultApi(client);
 
         StudentObject student1 = new StudentObject();
         student1.id(0);
@@ -47,5 +53,11 @@ public class ClientMain {
         log.info(api.studentIdDelete(student2.getId()));
         log.info(api.studentIdDelete(student3.getId()));
 
+        try {
+            log.info("{}", api.studentIdGet(1));
+        }
+        catch(ApiException e) {
+            log.info("Incorrect findById: {} {}", e.getCode(), e.getResponseBody());
+        }
     }
 }
